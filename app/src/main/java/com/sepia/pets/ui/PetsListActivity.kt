@@ -1,5 +1,6 @@
 package com.sepia.pets.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,11 @@ class PetsListActivity : AppCompatActivity(),PetsListListener {
         binding!!.recyclerview.layoutManager = LinearLayoutManager(this)
         binding!!.recyclerview.setHasFixedSize(true)
         viewmodel!!.petsListListener = this
-        petsListAdapter = PetsListAdapter();
+        petsListAdapter = PetsListAdapter {
+            var intent = Intent(this,PetDetailInfoActivity::class.java)
+            intent.putExtra("contentUrl",it!!.content_url)
+            startActivity(intent)
+        }
         binding!!.recyclerview.adapter = petsListAdapter
         viewmodel!!.getJsonData()
     }

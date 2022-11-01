@@ -9,7 +9,7 @@ import com.sepia.pets.databinding.PetsListAdapterBinding
 import com.sepia.pets.models.AllPets
 import com.sepia.pets.models.Pet
 
-class PetsListAdapter : RecyclerView.Adapter<PetsListAdapter.PetsListViewHolder>() {
+class PetsListAdapter(private val onSelect: (Pet?) -> Unit) : RecyclerView.Adapter<PetsListAdapter.PetsListViewHolder>() {
     lateinit var getAllPets: AllPets
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetsListViewHolder {
@@ -23,6 +23,9 @@ class PetsListAdapter : RecyclerView.Adapter<PetsListAdapter.PetsListViewHolder>
 
     override fun onBindViewHolder(holder: PetsListViewHolder, position: Int) {
         holder.binding.petsListModel = getAllPets.pets[position]
+        holder.binding.petsItem.setOnClickListener{
+            onSelect(getAllPets.pets[position])
+        }
     }
 
     override fun getItemCount(): Int = getAllPets.pets.size
