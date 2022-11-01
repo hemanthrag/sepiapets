@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">sepiapets</string>
+    <string name="dialogMessage">This application is accessible only durring working hours</string>
 </resources>
