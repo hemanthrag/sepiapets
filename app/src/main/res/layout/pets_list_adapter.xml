@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="petsListModel"
+            type="com.sepia.pets.models.Pet" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_pic"
+            android:layout_width="78.00dp"
+            android:layout_height="78.00dp"
+            android:layout_marginStart="10.40dp"
+            android:layout_marginLeft="10.40dp"
+            android:layout_marginTop="10.40dp"
+            android:layout_marginBottom="10.40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitXY"
+            bind:avatar_url="@{petsListModel.image_url}"
+
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_usernme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_pic"
+            android:layout_marginStart="10.40dp"
+            android:layout_marginTop="10.40dp"
+            android:layout_marginEnd="10.40dp"
+            android:padding="5.20dp"
+            android:text="@{petsListModel.title}"
+            android:textColor="#000000"
+            android:textSize="18.20sp"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toEndOf="@+id/img_pic"
+            bind:layout_constraintTop_toTopOf="parent"
+            tools:text="demo" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
